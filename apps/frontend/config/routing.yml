@@ -4,17 +4,10 @@
 # default rules
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: album, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules
-  
-default_index:
-  url:   /:module
-  param: { action: index }
-
-default:
-  url:   /:module/:action/*
 
 sf_guard_signin:
   url:   /login
@@ -27,3 +20,10 @@ sf_guard_signout:
 sf_guard_password:
   url:   /request_password
   param: { module: sfGuardAuth, action: password }
+  
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*
