@@ -5,6 +5,6 @@ all:
   doctrine:
     class: sfDoctrineDatabase
     param:
-      dsn:      mysql:host=localhost;dbname=aguayo
+      dsn:      mysql:host=localhost;dbname=aguayo_db
       username: root
       password: 
