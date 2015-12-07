@@ -1,0 +1,37 @@
+root:
+  albums:
+    name: Albums
+    menu:
+      list:
+        name: Album list
+        url: @homepage
+      create:
+        name: Album create
+        url: album/new
+  artist:
+    name: Artists
+    menu:
+      list:
+        name: Artists list
+        url: artist/index
+      create:
+        name: Artists create
+        url: artist/new
+  Genre:
+    name: Genre
+    menu:
+      list:
+        name: Genre list
+        url: genre/index
+      create:
+        name: Genre create
+        url: genre/new
+  yearProduction:
+    name: Years Productions
+    menu:
+      list:
+        name: Years Productions list
+        url: yearProduction/index
+      create:
+        name: Years Productions create
+        url: yearProduction/new

@@ -21,7 +21,7 @@ abstract class BaseYearProductionForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'   => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'date' => new sfValidatorInteger(array('required' => false)),
+      'date' => new sfValidatorInteger(),
     ));
 
     $this->widgetSchema->setNameFormat('year_production[%s]');

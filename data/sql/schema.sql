@@ -1,8 +1,8 @@
 CREATE TABLE album (id INT AUTO_INCREMENT, artist_id INT NOT NULL, genre_id INT NOT NULL, year_production_id INT NOT NULL, name VARCHAR(45) NOT NULL, image VARCHAR(45) NOT NULL, price VARCHAR(45) NOT NULL, stock INT NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX artist_id_idx (artist_id), INDEX genre_id_idx (genre_id), INDEX year_production_id_idx (year_production_id), PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE artist (id INT, name VARCHAR(45) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE artist (id INT AUTO_INCREMENT, name VARCHAR(45) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE genre (id INT AUTO_INCREMENT, name VARCHAR(45) NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE stock_hystory (id INT AUTO_INCREMENT, album_id INT NOT NULL, description VARCHAR(225) NOT NULL, alue INT NOT NULL, INDEX album_id_idx (album_id), PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE year_production (id INT, date BIGINT, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE year_production (id INT AUTO_INCREMENT, date BIGINT NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE sf_guard_forgot_password (id BIGINT AUTO_INCREMENT, user_id BIGINT NOT NULL, unique_key VARCHAR(255), expires_at DATETIME NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE sf_guard_group (id BIGINT AUTO_INCREMENT, name VARCHAR(255) UNIQUE, description TEXT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE sf_guard_group_permission (group_id BIGINT, permission_id BIGINT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(group_id, permission_id)) ENGINE = INNODB;

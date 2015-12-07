@@ -33,7 +33,7 @@ abstract class BaseYearProduction extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => true,
-             'autoincrement' => false,
+             'autoincrement' => true,
              'length' => 4,
              ));
         $this->hasColumn('date', 'integer', 8, array(
@@ -41,7 +41,7 @@ abstract class BaseYearProduction extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
-             'notnull' => false,
+             'notnull' => true,
              'autoincrement' => false,
              'length' => 8,
              ));
