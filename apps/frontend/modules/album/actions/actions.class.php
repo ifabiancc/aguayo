@@ -12,6 +12,7 @@ class albumActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
+      $this->filters = new AlbumFormFilter();
     $this->albums = Doctrine_Core::getTable('Album')
       ->createQuery('a')
       ->execute();
@@ -69,5 +70,19 @@ class albumActions extends sfActions
 
       $this->redirect('album/edit?id='.$album->getId());
     }
+  }
+  
+  public function executeAddStock(sfWebRequest $request) {
+      $this->forward404Unless($album = Doctrine_Core::getTable('Album')->find(array($request->getParameter('id'))), sprintf('Object album does not exist (%s).', $request->getParameter('id')));
+      $album->setStock($album->getStock() + 1);
+      $album->save();
+      return $this->renderText(json_encode(array('success'=>true, "stock"=>$album->getStock())));
+  }
+  
+  public function executeRemoveStock(sfWebRequest $request) {
+      $this->forward404Unless($album = Doctrine_Core::getTable('Album')->find(array($request->getParameter('id'))), sprintf('Object album does not exist (%s).', $request->getParameter('id')));
+      $album->setStock($album->getStock() - 1);
+      $album->save();
+      return $this->renderText(json_encode(array('success'=>true, "stock"=>$album->getStock())));
   }
 }

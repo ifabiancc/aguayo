@@ -62,6 +62,7 @@
           <?php echo $form['price'] ?>
         </td>
       </tr>
+      <?php if($form->getObject()->isNew()){ ?>
       <tr>
         <th><?php echo $form['stock']->renderLabel() ?></th>
         <td>
@@ -69,6 +70,7 @@
           <?php echo $form['stock'] ?>
         </td>
       </tr>
+      <?php } ?>
     </tbody>
   </table>
 </form>

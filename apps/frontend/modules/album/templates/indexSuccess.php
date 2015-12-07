@@ -1,32 +1,68 @@
 <h1>Albums List</h1>
 
-<table>
+<table class="table table-bordered">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Artist</th>
             <th>Genre</th>
             <th>Year production</th>
             <th>Name</th>
             <th>Image</th>
             <th>Price</th>
-            <th>Stock</th>
+            <?php if ($sf_user->isAuthenticated()): ?>
+                <th>Stock</th>
+                <th>Actions</th>
+            <?php endif ?>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($albums as $album): ?>
             <tr>
-                <td><a href="<?php echo url_for('album/edit?id=' . $album->getId()) ?>"><?php echo $album->getId() ?></a></td>
-                <td><?php echo $album->getArtistId() ?></td>
-                <td><?php echo $album->getGenreId() ?></td>
-                <td><?php echo $album->getYearProductionId() ?></td>
+                <td><?php echo $album->getArtist() ?></td>
+                <td><?php echo $album->getGenre() ?></td>
+                <td><?php echo $album->getYearProduction() ?></td>
                 <td><?php echo $album->getName() ?></td>
                 <td><img width="30px" src="../uploads/album/<?php echo $album->getImage() ?>" /></td>
                 <td><?php echo $album->getPrice() ?></td>
-                <td><?php echo $album->getStock() ?></td>
+                <?php if ($sf_user->isAuthenticated()): ?>
+                <td><button class="btn btn-success" onclick="removeStock(<?php echo $album->getId() ?>)"><i class="fa fa-minus"></i></button><label id="stock-<?php echo $album->getId() ?>"><?php echo $album->getStock() ?></label><button onclick="addStock(<?php echo $album->getId() ?>)" class="btn btn-success"><i class="fa fa-plus"></i></button></td>
+                    <td><a href="<?php echo url_for('album/edit?id=' . $album->getId()) ?>" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                        <a href="<?php echo url_for('album/edit?id=' . $album->getId()) ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i> Delete</a></td>
+                <?php endif ?>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
-
-<a href="<?php echo url_for('album/new') ?>">New</a>
+<?php if ($sf_user->isAuthenticated()): ?>
+    <a href="<?php echo url_for('album/new') ?>" class="btn btn-success"><i class="fa fa-plus-circle"></i> New</a>
+    <?php endif
+?>
+<script>
+    function addStock(id) {
+        $.ajax({
+            url: "<?php echo url_for('album/addStock') ?>",
+            method: "POST",
+            data: {id: id},
+            dataType: "json",
+            success: function(data){
+                if(data.success){
+                    $("#stock-"+id).text(data.stock);    
+                }
+            }
+        })
+    }
+    
+    function removeStock(id) {
+        $.ajax({
+            url: "<?php echo url_for('album/removeStock') ?>",
+            method: "POST",
+            data: {id: id},
+            dataType: "json",
+            success: function(data){
+                if(data.success){
+                    $("#stock-"+id).text(data.stock);    
+                }
+            }
+        })
+    }
+</script>
