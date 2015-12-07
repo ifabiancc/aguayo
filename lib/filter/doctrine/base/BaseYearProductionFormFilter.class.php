@@ -13,7 +13,7 @@ abstract class BaseYearProductionFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'date' => new sfWidgetFormFilterInput(),
+      'date' => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(

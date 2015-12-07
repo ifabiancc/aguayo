@@ -97,7 +97,7 @@ Artist:
       fixed: false
       unsigned: false
       primary: true
-      autoincrement: false
+      autoincrement: true
     name:
       type: string(45)
       fixed: false
@@ -177,13 +177,13 @@ YearProduction:
       fixed: false
       unsigned: false
       primary: true
-      autoincrement: false
+      autoincrement: true
     date:
       type: integer(8)
       fixed: false
       unsigned: false
       primary: false
-      notnull: false
+      notnull: true
       autoincrement: false
   relations:
     Album:
