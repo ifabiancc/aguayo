@@ -12,5 +12,7 @@
  */
 class YearProduction extends BaseYearProduction
 {
-
+    public function __toString() {
+        return $this->getDate();
+    }
 }
