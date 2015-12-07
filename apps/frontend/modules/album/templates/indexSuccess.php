@@ -42,7 +42,7 @@
                 <?php if ($sf_user->isAuthenticated()): ?>
                     <td><button class="btn btn-success" onclick="removeStock(<?php echo $album->getId() ?>)"><i class="fa fa-minus"></i></button><label id="stock-<?php echo $album->getId() ?>"><?php echo $album->getStock() ?></label><button onclick="addStock(<?php echo $album->getId() ?>)" class="btn btn-success"><i class="fa fa-plus"></i></button></td>
                     <td><a href="<?php echo url_for('album/edit?id=' . $album->getId()) ?>" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
-                        <a href="<?php echo url_for('album/edit?id=' . $album->getId()) ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i> Delete</a></td>
+                        <a href="<?php echo url_for('album/delete?id=' . $album->getId()) ?>" method="delete" class="btn btn-danger"><i class="fa fa-minus-circle"></i> Delete</a></td>
                 <?php endif ?>
             </tr>
         <?php endforeach; ?>

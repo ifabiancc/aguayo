@@ -35,3 +35,6 @@ root:
       create:
         name: Years Productions create
         url: yearProduction/new
+  logout:
+      name: Logout
+      url: @sf_guard_signout

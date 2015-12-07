@@ -26,10 +26,6 @@ class albumActions extends sfActions {
                     ->createQuery('a')
                     ->execute();
         }
-//        $this->filters = new AlbumFormFilter();
-//        $this->albums = Doctrine_Core::getTable('Album')
-//                ->createQuery('a')
-//                ->execute();
     }
 
     public function executeNew(sfWebRequest $request) {
